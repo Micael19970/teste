@@ -13,13 +13,14 @@ export default async function DashboardPage() {
     redirect('/login')
   }
 
-  // Fetch user plan
+  // Fetch user profile
   const { data: userData } = await supabase
     .from('users')
-    .select('plan')
+    .select('name, plan')
     .eq('id', user.id)
     .single()
 
+  const userName = userData?.name || user.email?.split('@')[0] || 'Aluno'
   const plan = userData?.plan || 'free'
   const isPremium = plan === 'premium'
 
@@ -55,8 +56,10 @@ export default async function DashboardPage() {
     <div className="flex-1 w-full max-w-7xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Área de Membros</h1>
-          <p className="text-gray-400 mt-2">Bem-vindo(a) de volta!</p>
+          <h1 className="text-3xl font-bold italic tracking-tight">
+            Olá, <span className="text-neon-purple">{userName}</span>!
+          </h1>
+          <p className="text-gray-400 mt-2">Que bom ter você de volta na nossa Área de Membros.</p>
         </div>
         
         <div className="bg-dark-100 p-4 rounded-xl border border-dark-200 min-w-[200px]">
