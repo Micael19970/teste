@@ -11,10 +11,10 @@ export async function GET(request: Request) {
 
   try {
     const data = await resend.emails.send({
-      from: 'Educa Dog <onboarding@resend.dev>',
+      from: 'Educa Dog <suporte@send.educadogemcasa.online>',
       to: email,
       subject: '🧪 Teste de Envio - Educa Dog',
-      html: '<h1 style="color: #b026ff;">Funciona!</h1><p>Se você recebeu isso, a integração com o Resend está 100% ativa.</p>'
+      html: '<h1 style="color: #b026ff;">Funciona!</h1><p>Se você recebeu isso, a integração com o Resend e seu domínio personalizado estão 100% ativos.</p>'
     });
 
     return NextResponse.json({ success: true, data })
