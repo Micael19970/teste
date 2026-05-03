@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { resend } from '@/lib/resend'
 
 export async function POST(request: Request) {
   try {
@@ -56,6 +57,13 @@ export async function POST(request: Request) {
         const userId = paymentData.external_reference
 
         if (userId) {
+          console.log('Buscando dados do usuário para o e-mail...')
+          const { data: userProfile } = await supabaseAdmin
+            .from('users')
+            .select('name, email')
+            .eq('id', userId)
+            .single()
+
           console.log('Atualizando plano para premium para o usuário:', userId)
           const { error } = await supabaseAdmin
             .from('users')
@@ -66,6 +74,38 @@ export async function POST(request: Request) {
             console.error('Erro ao atualizar banco de dados:', error)
           } else {
             console.log('Acesso liberado com sucesso!')
+            
+            // Envia o e-mail de acesso
+            if (userProfile?.email) {
+              try {
+                console.log('Enviando e-mail de acesso para:', userProfile.email)
+                await resend.emails.send({
+                  from: 'Educa Dog <onboarding@resend.dev>', // No futuro mude para seu domínio
+                  to: userProfile.email,
+                  subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
+                  html: `
+                    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background-color: #0a0a0a; color: #ffffff; padding: 40px; border-radius: 20px;">
+                      <h1 style="color: #b026ff; text-align: center;">Olá, ${userProfile.name || 'Aluno'}!</h1>
+                      <p style="font-size: 18px; text-align: center; color: #cccccc;">Seu pagamento foi confirmado e seu acesso à Área de Membros já está liberado.</p>
+                      
+                      <div style="background-color: #171717; padding: 30px; border-radius: 15px; margin: 30px 0; border: 1px solid #262626; text-align: center;">
+                        <h2 style="margin-top: 0;">Pronto para começar?</h2>
+                        <p style="color: #999999; margin-bottom: 25px;">Clique no botão abaixo para acessar o método completo e começar a transformar o comportamento do seu cão hoje mesmo.</p>
+                        <a href="https://educadogemcasa.online/dashboard" style="background: linear-gradient(90deg, #b026ff, #00f0ff); color: #000000; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block;">ACESSAR ÁREA DE MEMBROS</a>
+                      </div>
+
+                      <p style="font-size: 14px; color: #666666; text-align: center;">
+                        Se tiver qualquer dúvida, basta responder a este e-mail.<br>
+                        Equipe Educa Dog em Casa
+                      </p>
+                    </div>
+                  `
+                });
+                console.log('E-mail enviado com sucesso!')
+              } catch (mailError) {
+                console.error('Erro ao enviar e-mail:', mailError)
+              }
+            }
           }
         }
       }
