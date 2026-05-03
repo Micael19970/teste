@@ -83,21 +83,54 @@ export async function POST(request: Request) {
                   to: userProfile.email,
                   subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
                   html: `
-                    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background-color: #0a0a0a; color: #ffffff; padding: 40px; border-radius: 20px;">
-                      <h1 style="color: #b026ff; text-align: center;">Olá, ${userProfile.name || 'Aluno'}!</h1>
-                      <p style="font-size: 18px; text-align: center; color: #cccccc;">Seu pagamento foi confirmado e seu acesso à Área de Membros já está liberado.</p>
-                      
-                      <div style="background-color: #171717; padding: 30px; border-radius: 15px; margin: 30px 0; border: 1px solid #262626; text-align: center;">
-                        <h2 style="margin-top: 0;">Pronto para começar?</h2>
-                        <p style="color: #999999; margin-bottom: 25px;">Clique no botão abaixo para acessar o método completo e começar a transformar o comportamento do seu cão hoje mesmo.</p>
-                        <a href="https://educadogemcasa.online/dashboard" style="background: linear-gradient(90deg, #b026ff, #00f0ff); color: #000000; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block;">ACESSAR ÁREA DE MEMBROS</a>
-                      </div>
-
-                      <p style="font-size: 14px; color: #666666; text-align: center;">
-                        Se tiver qualquer dúvida, basta responder a este e-mail.<br>
-                        Equipe Educa Dog em Casa
-                      </p>
-                    </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        @import url('https://fonts.mailersend.com/css?family=Inter:400,600');
+        @media only screen and (max-width: 640px) {
+            .ms-content { width: 100% !important; border-radius: 0; }
+            .ms-content-body { padding: 30px !important; }
+        }
+    </style>
+</head>
+<body style="font-family:'Inter', Helvetica, Arial, sans-serif; background-color: #050505; color: #ffffff; margin: 0; padding: 40px 0;">
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+            <td align="center">
+                <table class="ms-content" width="600" cellpadding="0" cellspacing="0" style="background-color: #0a0a0a; border-radius: 20px; border: 1px solid #1a1a1a; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                    <tr>
+                        <td class="ms-content-body" style="padding: 50px;">
+                            <p style="text-align: center; margin-bottom: 40px;">
+                                <span style="color: #b026ff; font-size: 24px; font-weight: bold; letter-spacing: 2px;">❖ EDUCA DOG EM CASA</span>
+                            </p>
+                            <h1 style="font-size: 28px; line-height: 1.2; font-weight: 600; text-align: center; margin-bottom: 24px; background: linear-gradient(to right, #b026ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo(a) ao Método!</h1>
+                            <p style="color: #999999; font-size: 16px; line-height: 1.6; text-align: center; margin-bottom: 40px;">
+                                Parabéns pela sua decisão! Agora você tem em mãos o guia completo para transformar o comportamento do seu cão e ter uma convivência harmoniosa em casa.
+                            </p>
+                            <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                                <tr>
+                                    <td align="center">
+                                        <a href="https://educadogemcasa.online/dashboard" style="background-color: #b026ff; color: #ffffff; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 10px 20px rgba(176, 38, 255, 0.3);">ACESSAR ÁREA DE MEMBROS</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #1a1a1a; text-align: center;">
+                                <p style="color: #666666; font-size: 14px;">
+                                    Se tiver dúvidas, responda a este e-mail.<br>
+                                    © 2026 Educa Dog em Casa. Todos os direitos reservados.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
                   `
                 });
                 console.log('E-mail enviado com sucesso!')
