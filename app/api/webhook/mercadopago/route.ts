@@ -102,6 +102,29 @@ export async function POST(request: Request) {
                   `
                 });
                 console.log('E-mail enviado com sucesso!')
+
+                // NOTIFICAÇÃO PARA O DONO (MICAEL)
+                try {
+                  await resend.emails.send({
+                    from: 'Vendas <onboarding@resend.dev>',
+                    to: 'micaelzik2@gmail.com',
+                    subject: '💰 NOVA VENDA: Educa Dog em Casa!',
+                    html: `
+                      <div style="font-family: sans-serif; padding: 20px; background-color: #f4f4f4;">
+                        <h2>Parabéns, Micael! Você fez uma venda!</h2>
+                        <p><strong>Cliente:</strong> ${userProfile.name || 'Não informado'}</p>
+                        <p><strong>E-mail:</strong> ${userProfile.email}</p>
+                        <p><strong>Valor:</strong> R$ 10,00</p>
+                        <p><strong>ID do Pagamento:</strong> ${id}</p>
+                        <hr>
+                        <p>Continue assim! 🚀</p>
+                      </div>
+                    `
+                  });
+                  console.log('Notificação de venda enviada para o admin!')
+                } catch (adminMailError) {
+                  console.error('Erro ao enviar notificação para o admin:', adminMailError)
+                }
               } catch (mailError) {
                 console.error('Erro ao enviar e-mail:', mailError)
               }
