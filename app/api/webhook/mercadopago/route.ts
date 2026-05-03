@@ -80,7 +80,7 @@ export async function POST(request: Request) {
               try {
                 console.log('Enviando e-mail de acesso para:', userProfile.email)
                 await resend.emails.send({
-                  from: 'Educa Dog <onboarding@resend.dev>',
+                  from: 'Educa Dog <suporte@send.educadogemcasa.online>',
                   to: userProfile.email,
                   subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
                   html: `
@@ -106,7 +106,7 @@ export async function POST(request: Request) {
                 // NOTIFICAÇÃO PARA O DONO (MICAEL)
                 try {
                   await resend.emails.send({
-                    from: 'Vendas <onboarding@resend.dev>',
+                    from: 'Vendas <suporte@send.educadogemcasa.online>',
                     to: 'micaelzik2@gmail.com',
                     subject: '💰 NOVA VENDA: Educa Dog em Casa!',
                     html: `

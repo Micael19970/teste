@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   try {
     // Simulando o e-mail que o cliente recebe
     await resend.emails.send({
-      from: 'Educa Dog <onboarding@resend.dev>',
+      from: 'Educa Dog <suporte@send.educadogemcasa.online>',
       to: email,
       subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
       html: `
