@@ -1,7 +1,22 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
 
 export default function SuccessPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Redireciona automaticamente após 5 segundos
+    const timer = setTimeout(() => {
+      router.push('/dashboard')
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [router])
+
   return (
     <div className="flex-1 flex items-center justify-center p-4">
       <div className="w-full max-w-md p-8 bg-dark-100 border border-dark-200 rounded-3xl shadow-2xl text-center">
@@ -10,15 +25,19 @@ export default function SuccessPage() {
         </div>
         
         <h1 className="text-3xl font-bold mb-4">Pagamento Confirmado!</h1>
-        <p className="text-gray-400 mb-8">
+        <p className="text-gray-400 mb-6">
           Parabéns! Seu pagamento foi processado com sucesso. Você agora tem acesso completo ao EDUCA DOG EM CASA.
+        </p>
+
+        <p className="text-sm text-neon-blue mb-8 animate-pulse">
+          Redirecionando para as aulas em instantes...
         </p>
 
         <Link 
           href="/dashboard"
           className="block w-full py-4 px-6 bg-gradient-neon text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,240,255,0.3)]"
         >
-          Acessar Área de Membros
+          Acessar Área de Membros Agora
         </Link>
       </div>
     </div>
