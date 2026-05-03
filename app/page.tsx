@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Star, ShieldCheck, Clock, HelpCircle } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
@@ -109,7 +110,13 @@ export default function Home() {
             ].map((dep, i) => (
               <div key={i} className="p-8 bg-dark-100 rounded-2xl border border-dark-300 shadow-lg flex flex-col relative">
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                  <img src={dep.img} alt={dep.name} className="w-16 h-16 rounded-full border-4 border-background" />
+                  <Image 
+                    src={dep.img} 
+                    alt={dep.name} 
+                    width={64} 
+                    height={64} 
+                    className="w-16 h-16 rounded-full border-4 border-background" 
+                  />
                 </div>
                 <div className="flex justify-center space-x-1 mb-6 mt-8">
                   {[...Array(5)].map((_, j) => (

@@ -9,13 +9,12 @@ export async function POST(request: Request) {
     let topic = url.searchParams.get('topic') || url.searchParams.get('type')
     let id = url.searchParams.get('data.id') || url.searchParams.get('id')
 
-    // Tenta pegar do corpo da requisição (formato novo/JSON)
     try {
       const body = await request.json()
       console.log('--- Webhook Body Recebido ---', JSON.stringify(body))
       topic = topic || body.type || body.topic || (body.action?.split('.')[0])
       id = id || body.data?.id || body.id
-    } catch (e) {
+    } catch {
       console.log('Requisição sem corpo JSON ou erro ao ler')
     }
 

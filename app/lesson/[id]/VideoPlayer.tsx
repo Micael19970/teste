@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 import { PlayCircle } from 'lucide-react'
 
@@ -36,10 +37,11 @@ export default function VideoPlayer({ videoUrl }: { videoUrl: string | null }) {
         className="absolute inset-0 w-full h-full cursor-pointer group bg-black"
         onClick={() => setIsPlaying(true)}
       >
-        <img 
+        <Image 
           src={thumbnailUrl} 
           alt="Video thumbnail" 
-          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+          fill
+          className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
         />
         {/* Play button centralizado */}
         <div className="absolute inset-0 flex items-center justify-center">
