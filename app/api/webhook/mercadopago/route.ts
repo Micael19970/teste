@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { resend } from '@/lib/resend'
+import { sendEmail } from '@/lib/mailersend'
 
 export async function POST(request: Request) {
   try {
@@ -79,8 +79,7 @@ export async function POST(request: Request) {
             if (userProfile?.email) {
               try {
                 console.log('Enviando e-mail de acesso para:', userProfile.email)
-                await resend.emails.send({
-                  from: 'Educa Dog <suporte@send.educadogemcasa.online>',
+                await sendEmail({
                   to: userProfile.email,
                   subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
                   html: `
@@ -105,8 +104,7 @@ export async function POST(request: Request) {
 
                 // NOTIFICAÇÃO PARA O DONO (MICAEL)
                 try {
-                  await resend.emails.send({
-                    from: 'Vendas <suporte@send.educadogemcasa.online>',
+                  await sendEmail({
                     to: 'micaelzik2@gmail.com',
                     subject: '💰 NOVA VENDA: Educa Dog em Casa!',
                     html: `

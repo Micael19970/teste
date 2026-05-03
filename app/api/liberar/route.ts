@@ -1,6 +1,5 @@
-export const dynamic = 'force-dynamic'
 import { NextResponse } from 'next/server'
-import { resend } from '@/lib/resend'
+import { sendEmail } from '@/lib/mailersend'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -12,8 +11,7 @@ export async function GET(request: Request) {
 
   try {
     // Simulando o e-mail que o cliente recebe
-    await resend.emails.send({
-      from: 'Educa Dog <suporte@send.educadogemcasa.online>',
+    await sendEmail({
       to: email,
       subject: '🎉 Seu acesso ao EDUCA DOG EM CASA está liberado!',
       html: `
