@@ -108,8 +108,15 @@ export async function POST(request: Request) {
                             </p>
                             <h1 style="font-size: 28px; line-height: 1.2; font-weight: 600; text-align: center; margin-bottom: 24px; background: linear-gradient(to right, #b026ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo(a) ao Método!</h1>
                             <p style="color: #999999; font-size: 16px; line-height: 1.6; text-align: center; margin-bottom: 40px;">
-                                Parabéns pela sua decisão! Agora você tem em mãos o guia completo para transformar o comportamento do seu cão e ter uma convivência harmoniosa em casa.
+                                Parabéns pela sua decisão! Agora você tem em mãos o guia completo para transformar o comportamento do seu cão.
                             </p>
+
+                            <div style="background-color: #171717; padding: 25px; border-radius: 15px; border: 1px solid #262626; margin-bottom: 40px;">
+                                <h3 style="color: #ffffff; margin-top: 0; font-size: 16px;">Seus Dados de Acesso:</h3>
+                                <p style="color: #cccccc; font-size: 14px; margin: 5px 0;"><strong>Link:</strong> educadogemcasa.online/login</p>
+                                <p style="color: #cccccc; font-size: 14px; margin: 5px 0;"><strong>Usuário:</strong> ${userProfile.email}</p>
+                            </div>
+
                             <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr>
                                     <td align="center">
@@ -117,6 +124,10 @@ export async function POST(request: Request) {
                                     </td>
                                 </tr>
                             </table>
+
+                            <p style="color: #666666; font-size: 14px; text-align: center; margin-top: 40px;">
+                                Se precisar de ajuda, entre em contato com nosso <a href="mailto:suporte@educadogemcasa.online" style="color: #00f0ff; text-decoration: none;">Suporte</a>.
+                            </p>
                             <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #1a1a1a; text-align: center;">
                                 <p style="color: #666666; font-size: 14px;">
                                     Se tiver dúvidas, responda a este e-mail.<br>
