@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ArrowRight, Star, ShieldCheck, Clock, HelpCircle } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">

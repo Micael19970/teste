@@ -5,6 +5,8 @@ import { ArrowLeft, Download } from 'lucide-react'
 import MarkCompleteButton from './MarkCompleteButton'
 import VideoPlayer from './VideoPlayer'
 
+export const dynamic = 'force-dynamic'
+
 export default async function LessonPage({ params }: { params: { id: string } }) {
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
