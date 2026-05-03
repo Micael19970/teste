@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-blue;
+  }
+  .bg-gradient-neon {
+    @apply bg-gradient-to-r from-neon-purple to-neon-blue;
+  }
+}
