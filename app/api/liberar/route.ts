@@ -10,6 +10,12 @@ export async function GET(request: Request) {
   }
 
   try {
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+
+    if (!user) return NextResponse.json({ error: 'Faltando variável: SMTP_USER no Vercel' }, { status: 500 });
+    if (!pass) return NextResponse.json({ error: 'Faltando variável: SMTP_PASS no Vercel' }, { status: 500 });
+
     // Simulando o e-mail que o cliente recebe
     await sendEmail({
       to: email,
