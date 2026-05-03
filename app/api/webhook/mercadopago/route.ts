@@ -7,34 +7,47 @@ export async function POST(request: Request) {
     const topic = url.searchParams.get('topic') || url.searchParams.get('type')
     const id = url.searchParams.get('data.id') || url.searchParams.get('id')
 
+    console.log('--- Webhook Recebido ---')
+    console.log('Topic/Type:', topic)
+    console.log('ID:', id)
+
     if (topic === 'payment' && id) {
-      // In a real app, verify the signature or fetch the payment from MP to verify status
-      // Here we assume if we get a webhook it's a success for demo purposes, 
-      // but ideally you do: const payment = await paymentClient.get({ id })
-      
-      // Since we need to update DB as admin, we use service_role key
       const supabaseAdmin = createClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.SUPABASE_SERVICE_ROLE_KEY!
       )
 
-      // Fetch payment details from MercadoPago to get the external_reference (user.id)
+      console.log('Buscando pagamento no Mercado Pago...')
       const mpResponse = await fetch(`https://api.mercadopago.com/v1/payments/${id}`, {
         headers: {
           Authorization: `Bearer ${process.env.MP_ACCESS_TOKEN}`
         }
       })
+      
+      if (!mpResponse.ok) {
+        console.error('Erro ao buscar pagamento no MP:', await mpResponse.text())
+        return NextResponse.json({ error: 'MP Error' }, { status: 400 })
+      }
+
       const paymentData = await mpResponse.json()
+      console.log('Status do Pagamento:', paymentData.status)
+      console.log('External Reference (User ID):', paymentData.external_reference)
 
       if (paymentData.status === 'approved') {
         const userId = paymentData.external_reference
 
         if (userId) {
-          // Update user plan
-          await supabaseAdmin
+          console.log('Atualizando plano para premium para o usuário:', userId)
+          const { error } = await supabaseAdmin
             .from('users')
             .update({ plan: 'premium' })
             .eq('id', userId)
+          
+          if (error) {
+            console.error('Erro ao atualizar banco de dados:', error)
+          } else {
+            console.log('Acesso liberado com sucesso!')
+          }
         }
       }
     }
