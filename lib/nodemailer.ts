@@ -8,7 +8,7 @@ if (!smtpUser || !smtpPass) {
 }
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.titan.email",
+  host: "smtpout.secureserver.net",
   port: 465,
   secure: true,
   auth: {
