@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { User, Mail, Shield, CreditCard, LogOut } from 'lucide-react'
+import { User, Mail, Shield, CreditCard } from 'lucide-react'
 import LogoutButton from '@/components/dashboard/LogoutButton'
 export const dynamic = 'force-dynamic'
 
