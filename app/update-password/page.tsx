@@ -54,7 +54,7 @@ export default function UpdatePasswordPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
               minLength={6}
             />
@@ -65,7 +65,7 @@ export default function UpdatePasswordPage() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
               minLength={6}
             />

@@ -9,7 +9,7 @@ export default function TermosPage() {
   return (
     <div className="min-h-screen bg-background py-16 px-4">
       <div className="max-w-3xl mx-auto">
-        <Link href="/" className="inline-flex items-center text-gray-400 hover:text-neon-purple mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-gray-400 hover:text-primary mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Voltar para a página inicial
         </Link>

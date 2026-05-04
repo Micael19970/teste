@@ -16,11 +16,11 @@ export default function BlockedPage() {
 
         <Link 
           href="/checkout"
-          className="block w-full py-4 px-6 bg-gradient-neon text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(176,38,255,0.3)] mb-4"
+          className="block w-full py-4 px-6 bg-primary text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-xl shadow-primary/30 mb-4"
         >
           Desbloquear Agora
         </Link>
-        <Link href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+        <Link href="/dashboard" className="text-gray-400 hover:text-primary transition-colors">
           Voltar para Área de Membros
         </Link>
       </div>

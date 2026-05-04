@@ -45,7 +45,7 @@ export default function VideoPlayer({ videoUrl }: { videoUrl: string | null }) {
         />
         {/* Play button centralizado */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-20 h-20 bg-neon-purple/90 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(176,38,255,0.6)] group-hover:scale-110 transition-transform">
+          <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,102,0,0.4)] group-hover:scale-110 transition-transform">
             <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-2"></div>
           </div>
         </div>

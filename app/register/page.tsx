@@ -56,7 +56,7 @@ export default function RegisterPage() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
             />
           </div>
@@ -66,7 +66,7 @@ export default function RegisterPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
             />
           </div>
@@ -76,14 +76,14 @@ export default function RegisterPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-gradient-neon text-black font-bold rounded-md hover:opacity-90 transition-opacity disabled:opacity-50"
+            className="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-600 transition-all shadow-lg shadow-primary/20 disabled:opacity-50"
           >
             {loading ? 'Cadastrando...' : 'Cadastrar'}
           </button>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
 
         <p className="mt-6 text-center text-gray-400">
           Já tem uma conta?{' '}
-          <Link href="/login" className="text-neon-purple hover:underline">
+          <Link href="/login" className="text-primary hover:underline">
             Entrar
           </Link>
         </p>

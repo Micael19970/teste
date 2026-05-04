@@ -4,13 +4,18 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
 
 export default function Navbar() {
   const [user, setUser] = useState<User | null>(null)
   const supabase = createClient()
   const router = useRouter()
+  const pathname = usePathname()
+
+  if (pathname?.startsWith('/dashboard')) {
+    return null
+  }
 
   useEffect(() => {
     const getUser = async () => {
@@ -42,7 +47,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <Link href="/dashboard" className="text-sm font-medium text-foreground hover:text-neon-purple transition-colors">
+                <Link href="/dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                   Área de Membros
                 </Link>
                 <button
@@ -55,10 +60,10 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/login" className="text-sm font-medium text-foreground hover:text-neon-purple transition-colors">
+                <Link href="/login" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                   Entrar
                 </Link>
-                <Link href="/register" className="px-4 py-2 text-sm font-medium text-black bg-gradient-neon rounded-md hover:opacity-90 transition-opacity">
+                <Link href="/register" className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-xl hover:bg-primary-600 transition-colors">
                   Começar Agora
                 </Link>
               </>

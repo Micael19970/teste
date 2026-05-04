@@ -9,7 +9,7 @@ export default function ContatoPage() {
   return (
     <div className="min-h-screen bg-background py-16 px-4">
       <div className="max-w-3xl mx-auto">
-        <Link href="/" className="inline-flex items-center text-gray-400 hover:text-neon-purple mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-gray-400 hover:text-primary mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Voltar para a página inicial
         </Link>
@@ -24,24 +24,24 @@ export default function ContatoPage() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">
-          <div className="bg-dark-100 p-8 rounded-2xl border border-dark-200 flex flex-col items-center text-center hover:border-neon-purple/50 transition-colors">
-            <div className="w-16 h-16 bg-neon-purple/20 rounded-full flex items-center justify-center mb-4">
-              <Mail className="w-8 h-8 text-neon-purple" />
+          <div className="bg-dark-100 p-8 rounded-2xl border border-dark-200 flex flex-col items-center text-center hover:border-primary/50 transition-colors">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <Mail className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-xl font-bold mb-2">Suporte por E-mail</h2>
             <p className="text-gray-400 mb-4 text-sm">Respostas em até 24 horas úteis</p>
-            <a href="mailto:suporte@educadogemcasa.com" className="font-bold text-neon-blue hover:underline">
+            <a href="mailto:suporte@educadogemcasa.com" className="font-bold text-primary hover:underline">
               suporte@educadogemcasa.com
             </a>
           </div>
 
-          <div className="bg-dark-100 p-8 rounded-2xl border border-dark-200 flex flex-col items-center text-center hover:border-neon-purple/50 transition-colors">
-            <div className="w-16 h-16 bg-neon-blue/20 rounded-full flex items-center justify-center mb-4">
-              <Phone className="w-8 h-8 text-neon-blue" />
+          <div className="bg-dark-100 p-8 rounded-2xl border border-dark-200 flex flex-col items-center text-center hover:border-primary/50 transition-colors">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <Phone className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-xl font-bold mb-2">WhatsApp</h2>
             <p className="text-gray-400 mb-4 text-sm">Apenas para dúvidas financeiras</p>
-            <a href="#" className="font-bold text-neon-purple hover:underline">
+            <a href="#" className="font-bold text-primary hover:underline">
               (00) 00000-0000
             </a>
           </div>

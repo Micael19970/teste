@@ -29,13 +29,13 @@ export default function SuccessPage() {
           Parabéns! Seu pagamento foi processado com sucesso. Você agora tem acesso completo ao EDUCA DOG EM CASA.
         </p>
 
-        <p className="text-sm text-neon-blue mb-8 animate-pulse">
+        <p className="text-sm text-primary mb-8 animate-pulse">
           Redirecionando para as aulas em instantes...
         </p>
 
         <Link 
           href="/dashboard"
-          className="block w-full py-4 px-6 bg-gradient-neon text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+          className="block w-full py-4 px-6 bg-primary text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-xl shadow-primary/30"
         >
           Acessar Área de Membros Agora
         </Link>

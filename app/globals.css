@@ -10,9 +10,9 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple to-neon-blue;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-400;
   }
-  .bg-gradient-neon {
-    @apply bg-gradient-to-r from-neon-purple to-neon-blue;
+  .bg-gradient-orange {
+    @apply bg-gradient-to-r from-primary to-primary-600;
   }
 }

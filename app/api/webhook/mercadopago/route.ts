@@ -104,9 +104,9 @@ export async function POST(request: Request) {
                     <tr>
                         <td class="ms-content-body" style="padding: 50px;">
                             <p style="text-align: center; margin-bottom: 40px;">
-                                <span style="color: #b026ff; font-size: 24px; font-weight: bold; letter-spacing: 2px;">❖ EDUCA DOG EM CASA</span>
+                                <span style="color: #FF6600; font-size: 24px; font-weight: bold; letter-spacing: 2px;">❖ EDUCA DOG EM CASA</span>
                             </p>
-                            <h1 style="font-size: 28px; line-height: 1.2; font-weight: 600; text-align: center; margin-bottom: 24px; background: linear-gradient(to right, #b026ff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo(a) ao Método!</h1>
+                            <h1 style="font-size: 28px; line-height: 1.2; font-weight: 600; text-align: center; margin-bottom: 24px; color: #FF6600;">Bem-vindo(a) ao Método!</h1>
                             <p style="color: #999999; font-size: 16px; line-height: 1.6; text-align: center; margin-bottom: 40px;">
                                 Parabéns pela sua decisão! Agora você tem em mãos o guia completo para transformar o comportamento do seu cão.
                             </p>
@@ -120,13 +120,13 @@ export async function POST(request: Request) {
                             <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr>
                                     <td align="center">
-                                        <a href="https://educadogemcasa.online/dashboard" style="background-color: #b026ff; color: #ffffff; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 10px 20px rgba(176, 38, 255, 0.3);">ACESSAR ÁREA DE MEMBROS</a>
+                                        <a href="https://educadogemcasa.online/dashboard" style="background-color: #FF6600; color: #ffffff; padding: 18px 35px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);">ACESSAR ÁREA DE MEMBROS</a>
                                     </td>
                                 </tr>
                             </table>
 
                             <p style="color: #666666; font-size: 14px; text-align: center; margin-top: 40px;">
-                                Se precisar de ajuda, entre em contato com nosso <a href="mailto:suporte@educadogemcasa.online" style="color: #00f0ff; text-decoration: none;">Suporte</a>.
+                                Se precisar de ajuda, entre em contato com nosso <a href="mailto:suporte@educadogemcasa.online" style="color: #FF6600; text-decoration: none;">Suporte</a>.
                             </p>
                             <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #1a1a1a; text-align: center;">
                                 <p style="color: #666666; font-size: 14px;">

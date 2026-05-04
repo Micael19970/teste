@@ -50,7 +50,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
             />
           </div>
@@ -60,13 +60,13 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-md focus:outline-none focus:border-neon-purple text-foreground transition-colors"
+              className="w-full px-4 py-3 bg-dark-200 border border-dark-300 rounded-xl focus:outline-none focus:border-primary text-foreground transition-colors"
               required
             />
           </div>
           
           <div className="flex justify-end">
-            <Link href="/forgot-password" className="text-sm text-neon-blue hover:underline">
+            <Link href="/forgot-password" className="text-sm text-primary hover:underline">
               Esqueceu sua senha?
             </Link>
           </div>
@@ -74,7 +74,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-gradient-neon text-black font-bold rounded-md hover:opacity-90 transition-opacity disabled:opacity-50"
+            className="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-600 transition-all shadow-lg shadow-primary/20 disabled:opacity-50"
           >
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
@@ -82,7 +82,7 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-gray-400">
           Não tem uma conta?{' '}
-          <Link href="/register" className="text-neon-blue hover:underline">
+          <Link href="/register" className="text-primary hover:underline">
             Cadastre-se
           </Link>
         </p>

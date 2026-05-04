@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { Lock, PlayCircle, CheckCircle } from 'lucide-react'
+import { Lock, Play, CheckCircle2, Clock, Zap, BookOpen } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
@@ -39,83 +39,153 @@ export default async function DashboardPage() {
 
   const completedLessonIds = new Set(progress?.map(p => p.lesson_id) || [])
 
-  // If no lessons returned (e.g. database not populated yet), use mock data for presentation
+  // Mock data if database is empty
   const displayLessons = lessons && lessons.length > 0 ? lessons : [
-    { id: '1', title: 'Aula 1: A Base do Respeito', order_number: 1 },
-    { id: '2', title: 'Aula 2: Controle de Latidos', order_number: 2 },
-    { id: '3', title: 'Aula 3: Acabando com a Destruição', order_number: 3 },
-    { id: '4', title: 'Aula 4: O Passeio Perfeito', order_number: 4 },
-    { id: '5', title: 'Aula 5: Ansiedade de Separação', order_number: 5 },
+    { id: '1', title: 'Fundamentos do Adestramento Positivo', order_number: 1, duration: '12 min' },
+    { id: '2', title: 'Entendendo a Linguagem Corporal Canina', order_number: 2, duration: '15 min' },
+    { id: '3', title: 'Comandos Básicos: Senta, Fica e Vem', order_number: 3, duration: '20 min' },
+    { id: '4', title: 'Resolvendo Problemas de Comportamento', order_number: 4, duration: '18 min' },
+    { id: '5', title: 'Socialização e Passeio sem Puxar', order_number: 5, duration: '25 min' },
   ]
 
   const progressPercentage = displayLessons.length > 0 
     ? Math.round((completedLessonIds.size / displayLessons.length) * 100) 
     : 0
 
+  const lastCompletedLesson = displayLessons.find(l => completedLessonIds.has(l.id))
+  const nextLesson = displayLessons.find(l => !completedLessonIds.has(l.id)) || displayLessons[0]
+
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
-          <h1 className="text-3xl font-bold italic tracking-tight">
-            Olá, <span className="text-neon-purple">{userName}</span>!
+    <div className="space-y-8 animate-in fade-in duration-500">
+      {/* Welcome Hero */}
+      <div className="relative overflow-hidden rounded-3xl bg-dark-100 border border-dark-200 p-8 lg:p-12">
+        <div className="relative z-10 max-w-2xl">
+          <h1 className="text-3xl lg:text-5xl font-bold mb-4">
+            Olá, <span className="text-primary">{userName}</span>! 👋
           </h1>
-          <p className="text-gray-400 mt-2">Que bom ter você de volta na nossa Área de Membros.</p>
+          <p className="text-gray-400 text-lg mb-8">
+            {progressPercentage === 100 
+              ? 'Parabéns! Você concluiu todas as aulas. Que tal revisar algum módulo?'
+              : 'Pronto para continuar a transformação do seu melhor amigo?'}
+          </p>
+          
+          <div className="flex flex-wrap gap-4">
+            <Link 
+              href={`/dashboard/lesson/${nextLesson.id}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary-600 transition-all shadow-lg shadow-primary/20"
+            >
+              <Play size={20} fill="currentColor" />
+              Continuar Assistindo
+            </Link>
+            <div className="flex items-center gap-2 px-4 py-2 bg-dark-200 rounded-xl text-sm font-medium border border-dark-300">
+              <Clock size={16} className="text-primary" />
+              <span>Próxima: {nextLesson.title}</span>
+            </div>
+          </div>
         </div>
         
-        <div className="bg-dark-100 p-4 rounded-xl border border-dark-200 min-w-[200px]">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-400">Seu Progresso</span>
-            <span className="text-sm font-bold text-neon-blue">{progressPercentage}%</span>
+        {/* Abstract Background Element */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-dark-100 border border-dark-200 p-6 rounded-2xl flex items-center gap-4">
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+            <Zap size={24} />
           </div>
-          <div className="w-full bg-dark-300 rounded-full h-2">
-            <div 
-              className="bg-gradient-neon h-2 rounded-full transition-all duration-500" 
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
+          <div>
+            <p className="text-sm text-gray-400">Progresso Geral</p>
+            <p className="text-2xl font-bold">{progressPercentage}%</p>
+          </div>
+        </div>
+        <div className="bg-dark-100 border border-dark-200 p-6 rounded-2xl flex items-center gap-4">
+          <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500">
+            <BookOpen size={24} />
+          </div>
+          <div>
+            <p className="text-sm text-gray-400">Aulas Assistidas</p>
+            <p className="text-2xl font-bold">{completedLessonIds.size}/{displayLessons.length}</p>
+          </div>
+        </div>
+        <div className="bg-dark-100 border border-dark-200 p-6 rounded-2xl flex items-center gap-4">
+          <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500">
+            <CheckCircle2 size={24} />
+          </div>
+          <div>
+            <p className="text-sm text-gray-400">Status da Conta</p>
+            <p className="text-2xl font-bold capitalize">{plan}</p>
           </div>
         </div>
       </div>
 
+      {/* Upgrade CTA if Free */}
       {!isPremium && (
-        <div className="mb-8 p-6 bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-purple/50 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-xl font-bold mb-2">Desbloqueie o Acesso Completo</h2>
-            <p className="text-gray-300">Você está no plano gratuito. Adquira o EDUCA DOG EM CASA para assistir todas as aulas.</p>
+        <div className="bg-gradient-to-r from-primary/20 to-transparent border border-primary/30 p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30 animate-pulse">
+              <Zap size={24} fill="currentColor" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold">Desbloqueie o Método Completo</h2>
+              <p className="text-gray-400">Tenha acesso a todas as aulas e suporte exclusivo agora mesmo.</p>
+            </div>
           </div>
-          <Link href="/checkout" className="px-6 py-3 bg-gradient-neon text-black font-bold rounded-lg whitespace-nowrap hover:scale-105 transition-transform shadow-[0_0_15px_rgba(176,38,255,0.4)]">
-            Desbloquear por R$ 10,00
+          <Link href="/checkout" className="px-8 py-3 bg-primary text-white font-bold rounded-xl hover:scale-105 transition-transform">
+            UPGRADE POR R$ 10,00
           </Link>
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayLessons.map((lesson, idx) => {
-          const isCompleted = completedLessonIds.has(lesson.id)
-          const isLocked = !isPremium && idx > 0 // Primeira aula grátis, resto bloqueado
+      {/* Course Content */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold">Conteúdo do Curso</h2>
+          <span className="text-sm text-gray-400">{displayLessons.length} Aulas</span>
+        </div>
 
-          return (
-            <Link 
-              key={lesson.id} 
-              href={isLocked ? '/blocked' : `/lesson/${lesson.id}`}
-              className={`group relative p-6 rounded-2xl border transition-all ${
-                isLocked 
-                  ? 'bg-dark-200/50 border-dark-300 cursor-not-allowed opacity-75' 
-                  : 'bg-dark-100 border-dark-200 hover:border-neon-blue hover:shadow-[0_0_20px_rgba(0,240,255,0.15)]'
-              }`}
-            >
-              <div className="flex justify-between items-start mb-4">
-                <div className={`p-3 rounded-xl ${isLocked ? 'bg-dark-300' : 'bg-neon-blue/20 text-neon-blue'}`}>
-                  {isLocked ? <Lock className="w-6 h-6" /> : <PlayCircle className="w-6 h-6" />}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {displayLessons.map((lesson, idx) => {
+            const isCompleted = completedLessonIds.has(lesson.id)
+            const isLocked = !isPremium && idx > 0
+
+            return (
+              <Link 
+                key={lesson.id} 
+                href={isLocked ? '/blocked' : `/dashboard/lesson/${lesson.id}`}
+                className={`group flex items-center gap-4 p-4 rounded-2xl border transition-all ${
+                  isLocked 
+                    ? 'bg-dark-100/50 border-dark-200 opacity-60 cursor-not-allowed' 
+                    : 'bg-dark-100 border-dark-200 hover:border-primary/50 hover:bg-dark-200 shadow-sm'
+                }`}
+              >
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                  isLocked ? 'bg-dark-300' : isCompleted ? 'bg-green-500/10 text-green-500' : 'bg-primary/10 text-primary'
+                }`}>
+                  {isLocked ? <Lock size={20} /> : isCompleted ? <CheckCircle2 size={24} /> : <Play size={20} fill="currentColor" />}
                 </div>
-                {isCompleted && (
-                  <CheckCircle className="w-6 h-6 text-green-500" />
+                
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">Aula {lesson.order_number}</p>
+                  <h3 className="font-bold truncate">{lesson.title}</h3>
+                  <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
+                    <span className="flex items-center gap-1">
+                      <Clock size={12} />
+                      {lesson.duration || '10 min'}
+                    </span>
+                    {isLocked && <span className="text-primary font-bold">Bloqueado</span>}
+                  </div>
+                </div>
+                
+                {!isLocked && !isCompleted && (
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Play size={20} className="text-primary" />
+                  </div>
                 )}
-              </div>
-              <h3 className="text-lg font-bold mb-2 line-clamp-2">{lesson.title}</h3>
-              <p className="text-sm text-gray-500">Módulo Único • Aula {lesson.order_number}</p>
-            </Link>
-          )
-        })}
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

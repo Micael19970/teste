@@ -1,220 +1,342 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Star, ShieldCheck, Clock, HelpCircle } from 'lucide-react'
+import { 
+  ArrowRight, 
+  Star, 
+  ShieldCheck, 
+  Clock, 
+  HelpCircle, 
+  CheckCircle2, 
+  Zap, 
+  BookOpen, 
+  Play,
+  Award
+} from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* HEADER ESCASSEZ */}
-      <div className="w-full bg-red-600 text-white text-center py-2 text-sm font-bold uppercase tracking-wide">
-        🚨 Atenção: Últimas horas para garantir o acesso vitalício por apenas R$ 10,00!
+      <div className="w-full bg-primary text-white text-center py-2 text-sm font-bold uppercase tracking-widest">
+        🔥 ÚLTIMAS VAGAS COM ACESSO VITALÍCIO POR APENAS R$ 10,00!
       </div>
 
-      {/* HERO SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 flex flex-col items-center text-center">
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-neon-purple/20 border border-neon-purple/50 text-neon-purple font-semibold text-sm">
-          🐶 Método Comprovado por mais de 2.000 alunos
+      {/* NAVBAR */}
+      <nav className="w-full max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold">E</span>
+          </div>
+          <span className="text-xl font-bold tracking-tight">EDUCA<span className="text-primary">DOG</span></span>
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-          O Segredo Para Ter Um Cachorro <br className="hidden lg:block" />
-          <span className="text-gradient">Obediente Em Poucos Dias</span>
-        </h1>
-        <p className="text-lg sm:text-2xl text-gray-400 mb-10 max-w-3xl">
-          Sem precisar gritar, sem usar força física e dedicando apenas 15 minutos do seu dia. 
-          Descubra o passo a passo exato do <strong className="text-white">EDUCA DOG EM CASA</strong>.
-        </p>
-
-        <div className="w-full max-w-4xl rounded-2xl shadow-[0_0_40px_rgba(176,38,255,0.3)] mb-12 border border-dark-300 overflow-hidden bg-black">
-          <video 
-            src="/vsl.mp4" 
-            controls 
-            controlsList="nodownload"
-            className="w-full h-auto max-h-[600px] object-contain"
-          >
-            Seu navegador não suporta vídeos.
-          </video>
-        </div>
-
         <Link 
-          href="/register" 
-          className="group relative inline-flex items-center justify-center px-8 py-5 text-xl font-extrabold text-black bg-gradient-neon rounded-xl hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(0,240,255,0.5)]"
+          href="/login" 
+          className="px-6 py-2 border border-dark-300 rounded-full font-bold hover:bg-dark-100 transition-colors"
         >
-          QUERO TRANSFORMAR MEU CÃO AGORA
-          <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+          Área do Aluno
         </Link>
-        <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-gray-400">
-          <ShieldCheck className="w-4 h-4 text-green-500" />
-          <span>Pagamento 100% Seguro via Mercado Pago</span>
+      </nav>
+
+      {/* HERO SECTION */}
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-sm">
+            <Star size={16} fill="currentColor" />
+            Método Comprovado (2.000+ Alunos)
+          </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
+            O Seu Cão <br />
+            <span className="text-gradient">Obediente e Feliz</span> <br />
+            em 15 Minutos
+          </h1>
+          <p className="text-xl text-gray-400 max-w-xl">
+            Descubra o passo a passo exato do <strong className="text-white">EDUCA DOG EM CASA</strong>. 
+            Sem gritos, sem força física e com resultados visíveis em poucos dias.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link 
+              href="/register" 
+              className="group flex items-center justify-center px-8 py-5 text-xl font-extrabold text-white bg-primary rounded-2xl hover:scale-105 transition-all shadow-xl shadow-primary/30"
+            >
+              COMEÇAR AGORA
+              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <div className="flex items-center gap-3 px-4 py-2 border border-dark-300 rounded-2xl">
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="w-8 h-8 rounded-full bg-dark-200 border-2 border-background flex items-center justify-center overflow-hidden">
+                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
+                  </div>
+                ))}
+              </div>
+              <span className="text-sm font-medium text-gray-400">+2k alunos ativos</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4 text-sm text-gray-500">
+            <ShieldCheck className="text-green-500" size={20} />
+            Pagamento 100% Seguro • Acesso Imediato
+          </div>
+        </div>
+
+        <div className="relative group">
+          <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-colors"></div>
+          <div className="relative rounded-3xl overflow-hidden border border-dark-300 shadow-2xl bg-black">
+             <video 
+              src="/vsl.mp4" 
+              controls 
+              poster="/video-poster.jpg"
+              className="w-full h-auto aspect-video object-cover"
+            >
+              Seu navegador não suporta vídeos.
+            </video>
+          </div>
         </div>
       </section>
 
-      {/* PAIN POINTS (DORES) */}
-      <section className="bg-dark-100 py-20 border-y border-dark-200">
+      {/* LOGOS / SOCIAL PROOF BAR */}
+      <div className="w-full bg-dark-100 py-8 border-y border-dark-200">
+        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+          <span className="text-xl font-bold italic">REDE GLOBO</span>
+          <span className="text-xl font-bold italic">VEJA</span>
+          <span className="text-xl font-bold italic">FOLHA</span>
+          <span className="text-xl font-bold italic">ESTADÃO</span>
+          <span className="text-xl font-bold italic">SBT</span>
+        </div>
+      </div>
+
+      {/* PAIN POINTS */}
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-5xl font-bold text-center mb-16">
-            Você está cansado de passar por isso?
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              "Chegar do trabalho e encontrar a casa destruída (sofá, sapatos, lixo).",
-              "Passear com o cachorro e ele te puxar o tempo todo como se estivesse em uma corrida.",
-              "Receber visitas e o cachorro pular, latir e incomodar todo mundo.",
-              "Fazer xixi e cocô no lugar errado mesmo você já tendo ensinado mil vezes.",
-              "Latidos excessivos que atrapalham o seu sono e geram reclamações dos vizinhos.",
-              "Agressividade ou rosnados na hora de comer ou pegar um brinquedo."
-            ].map((dor, i) => (
-              <div key={i} className="p-6 bg-dark-200 rounded-2xl border border-red-500/20 flex items-start space-x-4">
-                <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-red-500 font-bold">X</span>
-                </div>
-                <p className="text-gray-300 text-lg">{dor}</p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
+                Você ainda sofre com <br />
+                <span className="text-primary italic">comportamentos indesejados?</span>
+              </h2>
+              <div className="space-y-4">
+                {[
+                  "Xixi e cocô espalhados pela casa toda",
+                  "Móveis, sapatos e chinelos destruídos",
+                  "Passeios que parecem uma queda de braço",
+                  "Latidos excessivos que incomodam os vizinhos",
+                  "Pulos excessivos em visitas e crianças"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 p-4 bg-dark-100 rounded-2xl border border-dark-200 group hover:border-primary/30 transition-colors">
+                    <div className="w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 flex-shrink-0">
+                      <span className="font-bold">×</span>
+                    </div>
+                    <span className="text-gray-300 font-medium">{item}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            <div className="bg-dark-100 p-8 md:p-12 rounded-[40px] border border-dark-200 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+              <h3 className="text-2xl font-bold mb-6">A boa notícia é: <br /><span className="text-primary">A culpa não é sua (e nem do seu cão).</span></h3>
+              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+                Cães não nascem sabendo as regras dos humanos. Eles precisam de uma guia clara e um método que eles consigam entender. 
+              </p>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                O **EDUCA DOG EM CASA** foi criado justamente para ser essa ponte de comunicação, transformando o caos em obediência em tempo recorde.
+              </p>
+            </div>
           </div>
-          
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-gradient mb-4">A culpa não é do seu cachorro (e nem sua!)</h3>
-            <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-              Vocês apenas estão falando idiomas diferentes. O EDUCA DOG EM CASA é o tradutor que faltava para vocês se entenderem de uma vez por todas.
+        </div>
+      </section>
+
+      {/* MODULES SECTION - Inspired by Reference */}
+      <section className="py-24 bg-dark-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl sm:text-5xl font-bold">O Que Você Vai <span className="text-primary">Aprender</span></h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Um cronograma completo do básico ao avançado para transformar o comportamento do seu cão.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* SOCIAL PROOF (AVALIAÇÕES) */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-5xl font-bold text-center mb-16">
-            Quem aplica, <span className="text-gradient">vê resultados rápidos</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                name: "Mariana Silva",
-                img: "https://i.pravatar.cc/150?img=5",
-                text: "Eu não aguentava mais meu Golden puxando a guia. Em apenas 3 dias aplicando o módulo 4, ele já está andando do meu lado! Parece mágica."
+                title: "Módulo 1: Fundamentos",
+                desc: "A psicologia canina e como estabelecer liderança sem medo.",
+                items: ["A base do respeito", "Rotina equilibrada", "Linguagem corporal"],
+                icon: Zap
               },
               {
-                name: "Carlos Eduardo",
-                img: "https://i.pravatar.cc/150?img=11",
-                text: "Achava que meu vira-lata já estava velho demais pra aprender (ele tem 6 anos). Hoje ele não pula mais nas visitas e espera o comando pra comer. Valeu cada centavo!"
+                title: "Módulo 2: Comportamento",
+                desc: "Resolvendo problemas comuns do dia a dia doméstico.",
+                items: ["Xixi e cocô no lugar", "Acabando com a destruição", "Controle de latidos"],
+                icon: BookOpen
               },
               {
-                name: "Ana Paula",
-                img: "https://i.pravatar.cc/150?img=9",
-                text: "Comprei vários cursos caros antes e nenhum funcionou porque eram muito complexos. Esse método é direto ao ponto. Meu tapete da sala agradece! kkk"
+                title: "Módulo 3: Comandos",
+                desc: "Os comandos essenciais para controle e segurança.",
+                items: ["Senta e Fica", "O 'Vem' infalível", "Deita e Espera"],
+                icon: Play
+              },
+              {
+                title: "Módulo 4: Passeio",
+                desc: "Transforme o passeio em um momento de puro prazer.",
+                items: ["Andar sem puxar", "Reatividade com outros cães", "Equipamentos corretos"],
+                icon: Award
+              },
+              {
+                title: "Módulo 5: Socialização",
+                desc: "Como apresentar pessoas e outros animais com segurança.",
+                items: ["Visitas em casa", "Crianças e cães", "Ambientes públicos"],
+                icon: Star
+              },
+              {
+                title: "BÔNUS: Alimentação",
+                desc: "Dicas de nutrição e petiscos saudáveis para treino.",
+                items: ["O que evitar", "Petiscos caseiros", "Horários de refeição"],
+                icon: Zap,
+                isBonus: true
               }
-            ].map((dep, i) => (
-              <div key={i} className="p-8 bg-dark-100 rounded-2xl border border-dark-300 shadow-lg flex flex-col relative">
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                  <Image 
-                    src={dep.img} 
-                    alt={dep.name} 
-                    width={64} 
-                    height={64} 
-                    className="w-16 h-16 rounded-full border-4 border-background" 
-                  />
+            ].map((mod, i) => (
+              <div key={i} className={`p-8 rounded-3xl border transition-all ${mod.isBonus ? 'bg-primary/5 border-primary/20' : 'bg-dark-100 border-dark-200'}`}>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${mod.isBonus ? 'bg-primary text-white' : 'bg-primary/10 text-primary'}`}>
+                  <mod.icon size={24} />
                 </div>
-                <div className="flex justify-center space-x-1 mb-6 mt-8">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-5 h-5 text-yellow-500 fill-current" />
+                <h3 className="text-xl font-bold mb-3">{mod.title}</h3>
+                <p className="text-gray-400 text-sm mb-6">{mod.desc}</p>
+                <ul className="space-y-3">
+                  {mod.items.map((item, j) => (
+                    <li key={j} className="flex items-center gap-2 text-sm">
+                      <CheckCircle2 size={16} className="text-primary" />
+                      <span>{item}</span>
+                    </li>
                   ))}
-                </div>
-                <p className="text-gray-300 flex-grow mb-6 text-center italic">&quot;{dep.text}&quot;</p>
-                <p className="font-bold text-neon-blue text-center">{dep.name}</p>
+                </ul>
               </div>
             ))}
           </div>
         </div>
+      {/* INSTRUCTOR SECTION */}
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-[40px]"></div>
+            <div className="relative rounded-[40px] overflow-hidden border border-dark-300 aspect-[4/5]">
+              <Image 
+                src="https://images.unsplash.com/photo-1541599540903-216a46ca1dfc?auto=format&fit=crop&q=80&w=800" 
+                alt="Adestrador Profissional" 
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-8 -right-8 bg-dark-100 border border-dark-200 p-6 rounded-3xl shadow-2xl hidden md:block">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <Award size={24} />
+                </div>
+                <div>
+                  <p className="font-bold">Certificado Internacional</p>
+                  <p className="text-sm text-gray-500">Adestramento Positivo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-4xl font-bold italic">Quem vai te <span className="text-primary">guiar</span>?</h2>
+              <p className="text-xl text-gray-400">
+                Olá, eu sou o **Micael**, especialista em comportamento canino com mais de 10 anos de experiência transformando a relação entre donos e cães.
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              <p className="text-gray-400 leading-relaxed">
+                Minha missão é mostrar que você não precisa de força, gritos ou punições para ter um cão educado. O segredo está na **comunicação e no reforço positivo**.
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                Já ajudei mais de 2.000 famílias a recuperarem a paz em suas casas, ensinando desde comandos básicos até a resolução de comportamentos complexos como agressividade e ansiedade.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-6 pt-4">
+              <div>
+                <p className="text-3xl font-black text-primary">10+</p>
+                <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Anos de Experiência</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-primary">2k+</p>
+                <p className="text-sm text-gray-500 uppercase tracking-widest font-bold">Alunos Felizes</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* OFFER & SCARCITY */}
-      <section className="bg-gradient-to-br from-dark-100 to-neon-purple/10 py-20 border-y border-neon-purple/30 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-neon-blue/20 rounded-full blur-[100px]"></div>
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-4xl sm:text-5xl font-extrabold mb-8">
-            Tudo o que você precisa por um <span className="text-neon-purple underline">preço simbólico</span>
+      {/* CTA SECTION */}
+      <section className="py-24 bg-primary relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-8">
+          <h2 className="text-4xl sm:text-6xl font-extrabold text-white">
+            Pronto para começar a <br /> transformação?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Enquanto um adestrador particular cobra em média <strong>R$ 800,00 por mês</strong>, hoje você vai levar o acesso VITALÍCIO ao método completo por um valor inacreditável.
+          <p className="text-xl text-white/80">
+            Garanta sua vaga hoje com acesso vitalício e todos os bônus inclusos.
           </p>
           
-          <div className="bg-background border-2 border-neon-purple p-8 rounded-3xl inline-block w-full max-w-md shadow-[0_0_40px_rgba(176,38,255,0.2)]">
-            <p className="text-gray-400 line-through text-xl mb-2">De R$ 197,00</p>
-            <div className="flex items-end justify-center gap-2 mb-2">
-              <span className="text-2xl font-bold">por apenas</span>
-              <span className="text-6xl font-extrabold text-gradient">R$ 10</span>
+          <div className="bg-white p-8 rounded-[40px] shadow-2xl inline-block w-full max-w-md">
+            <p className="text-gray-400 line-through text-lg">De R$ 197,00</p>
+            <div className="flex items-center justify-center gap-2 my-2">
+              <span className="text-2xl font-bold text-gray-900">por apenas</span>
+              <span className="text-6xl font-black text-primary">R$ 10</span>
             </div>
-            <p className="text-neon-blue font-bold mb-8">Pagamento Único • Acesso Vitalício</p>
+            <p className="text-primary font-bold mb-8">PAGAMENTO ÚNICO • SEM MENSALIDADES</p>
             
             <Link 
               href="/register" 
-              className="w-full flex items-center justify-center px-8 py-5 text-xl font-extrabold text-black bg-gradient-neon rounded-xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+              className="w-full flex items-center justify-center px-8 py-5 text-xl font-extrabold text-white bg-primary rounded-2xl hover:scale-105 transition-all shadow-xl shadow-primary/20"
             >
-              SIM! QUERO GARANTIR MINHA VAGA
+              QUERO MINHA VAGA AGORA
             </Link>
-            
-            <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-gray-400">
-              <Clock className="w-4 h-4 text-red-500" />
-              <span>Oferta expira em breve. Vagas limitadas.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 bg-background">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <HelpCircle className="w-8 h-8 text-neon-blue" />
-            Perguntas Frequentes
-          </h2>
-          
-          <div className="space-y-6">
-            {[
-              {
-                q: "Como vou receber o acesso?",
-                a: "Assim que o pagamento de R$ 10 for aprovado, seu acesso é liberado instantaneamente aqui mesmo na plataforma. Basta criar sua conta!"
-              },
-              {
-                q: "O pagamento é seguro?",
-                a: "Sim! Utilizamos a tecnologia do Mercado Pago. Seus dados estão 100% criptografados e protegidos."
-              },
-              {
-                q: "E se meu cachorro já for adulto, funciona?",
-                a: "Absolutamente! O método funciona para filhotes a partir de 45 dias até cães idosos. Cães aprendem em qualquer idade."
-              },
-              {
-                q: "Por quanto tempo tenho acesso?",
-                a: "O acesso é VITALÍCIO. Você paga apenas uma vez e pode assistir às aulas quando e quantas vezes quiser, para sempre."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="bg-dark-100 p-6 rounded-xl border border-dark-200">
-                <h3 className="text-xl font-bold mb-2">{faq.q}</h3>
-                <p className="text-gray-400">{faq.a}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-dark-100 border-t border-dark-200 py-12 mt-auto text-center">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-xl font-bold text-gray-400 mb-6">EDUCA DOG EM CASA</h2>
-          <div className="flex justify-center gap-6 mb-8 text-sm text-gray-500">
-            <Link href="/termos" className="hover:text-neon-purple transition-colors">Termos de Uso</Link>
-            <Link href="/privacidade" className="hover:text-neon-purple transition-colors">Política de Privacidade</Link>
-            <Link href="/contato" className="hover:text-neon-purple transition-colors">Contato</Link>
+      <footer className="bg-dark-100 border-t border-dark-200 py-16 text-center lg:text-left">
+        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-12">
+          <div className="md:col-span-2 space-y-6">
+            <div className="flex items-center gap-2 justify-center lg:justify-start">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold">E</span>
+              </div>
+              <span className="text-xl font-bold tracking-tight">EDUCA<span className="text-primary">DOG</span></span>
+            </div>
+            <p className="text-gray-400 max-w-sm mx-auto lg:mx-0">
+              Transformando a vida de cães e donos através de um método de adestramento positivo e eficiente.
+            </p>
           </div>
-          <p className="text-sm text-gray-600">
-            Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. 
-            Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.<br/>
-            © {new Date().getFullYear()} Educa Dog em Casa. Todos os direitos reservados.
-          </p>
+          
+          <div className="space-y-4">
+            <h4 className="font-bold">Links Úteis</h4>
+            <ul className="space-y-2 text-gray-500">
+              <li><Link href="/termos" className="hover:text-primary transition-colors">Termos de Uso</Link></li>
+              <li><Link href="/privacidade" className="hover:text-primary transition-colors">Privacidade</Link></li>
+              <li><Link href="/contato" className="hover:text-primary transition-colors">Contato</Link></li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-bold">Acesso</h4>
+            <Link href="/login" className="inline-block px-6 py-2 bg-dark-200 rounded-xl font-bold text-sm hover:bg-dark-300 transition-colors">
+              Área do Aluno
+            </Link>
+          </div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-dark-200 text-center text-xs text-gray-600">
+          © {new Date().getFullYear()} Educa Dog em Casa. Todos os direitos reservados.
         </div>
       </footer>
     </div>
