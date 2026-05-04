@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { User, Mail, Shield, CreditCard, LogOut } from 'lucide-react'
+import LogoutButton from '@/components/dashboard/LogoutButton'
 export const dynamic = 'force-dynamic'
 
 export default async function ProfilePage() {
@@ -48,10 +49,7 @@ export default async function ProfilePage() {
             </div>
           </div>
 
-          <button className="w-full flex items-center justify-center gap-2 p-4 rounded-2xl border border-red-500/30 text-red-500 hover:bg-red-500/10 transition-colors">
-            <LogOut size={20} />
-            <span>Encerrar Sessão</span>
-          </button>
+          <LogoutButton />
         </div>
 
         {/* Right Column: Detailed Info Form */}

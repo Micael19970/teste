@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { 
   LayoutDashboard, 
   BookOpen, 
@@ -14,10 +14,19 @@ import {
   X
 } from 'lucide-react'
 import { useState } from 'react'
+import { createClient } from '@/lib/supabase/client'
 
 export default function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
+  const supabase = createClient()
   const [isOpen, setIsOpen] = useState(false)
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.push('/login')
+    router.refresh()
+  }
 
   const navItems = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -80,7 +89,7 @@ export default function Sidebar() {
           <div className="pt-6 border-t border-dark-200">
             <button 
               className="flex items-center gap-3 px-4 py-3 w-full text-gray-400 hover:text-red-500 transition-colors"
-              onClick={() => {/* Sign out logic */}}
+              onClick={handleLogout}
             >
               <LogOut size={20} />
               <span className="font-medium">Sair</span>
