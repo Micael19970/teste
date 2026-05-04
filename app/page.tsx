@@ -84,9 +84,9 @@ export default function Home() {
           <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:bg-primary/30 transition-colors"></div>
           <div className="relative rounded-3xl overflow-hidden border border-dark-300 shadow-2xl bg-black">
              <video 
-              src="/vsl.mp4" 
+              src="/vsl.mp4#t=0.001" 
               controls 
-              poster="/video-poster.jpg"
+              preload="metadata"
               className="w-full h-auto aspect-video object-cover"
             >
               Seu navegador não suporta vídeos.
