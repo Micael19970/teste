@@ -13,10 +13,6 @@ export default function Navbar() {
   const router = useRouter()
   const pathname = usePathname()
 
-  if (pathname?.startsWith('/dashboard')) {
-    return null
-  }
-
   useEffect(() => {
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser()
@@ -35,6 +31,10 @@ export default function Navbar() {
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push('/login')
+  }
+
+  if (pathname?.startsWith('/dashboard')) {
+    return null
   }
 
   return (

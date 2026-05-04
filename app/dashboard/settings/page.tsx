@@ -1,4 +1,4 @@
-import { Settings, Shield, Bell, Lock, Smartphone } from 'lucide-react'
+import { Shield, Bell, Lock, Smartphone } from 'lucide-react'
 
 export default function SettingsPage() {
   return (

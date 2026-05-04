@@ -4,8 +4,6 @@ import {
   ArrowRight, 
   Star, 
   ShieldCheck, 
-  Clock, 
-  HelpCircle, 
   CheckCircle2, 
   Zap, 
   BookOpen, 
@@ -68,7 +66,7 @@ export default function Home() {
               <div className="flex -space-x-2">
                 {[1, 2, 3].map(i => (
                   <div key={i} className="w-8 h-8 rounded-full bg-dark-200 border-2 border-background flex items-center justify-center overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="User" />
+                    <Image src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Avatar de aluno ativo" width={32} height={32} />
                   </div>
                 ))}
               </div>

@@ -40,6 +40,8 @@ export default function RootLayout({
             width="1" 
             style={{ display: 'none' }}
             src="https://www.facebook.com/tr?id=1619101142248179&ev=PageView&noscript=1"
+            alt=""
+            aria-hidden="true"
           />
         </noscript>
         <Navbar />

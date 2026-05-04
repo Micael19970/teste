@@ -52,7 +52,6 @@ export default async function DashboardPage() {
     ? Math.round((completedLessonIds.size / displayLessons.length) * 100) 
     : 0
 
-  const lastCompletedLesson = displayLessons.find(l => completedLessonIds.has(l.id))
   const nextLesson = displayLessons.find(l => !completedLessonIds.has(l.id)) || displayLessons[0]
 
   return (

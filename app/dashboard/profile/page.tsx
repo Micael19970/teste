@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import { User, Mail, Shield, Calendar, CreditCard, LogOut } from 'lucide-react'
-
+import Link from 'next/link'
+import { User, Mail, Shield, CreditCard, LogOut } from 'lucide-react'
 export const dynamic = 'force-dynamic'
 
 export default async function ProfilePage() {
