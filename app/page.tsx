@@ -96,13 +96,20 @@ export default function Home() {
       </section>
 
       {/* LOGOS / SOCIAL PROOF BAR */}
-      <div className="w-full bg-dark-100 py-8 border-y border-dark-200">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
-          <span className="text-xl font-bold italic">REDE GLOBO</span>
-          <span className="text-xl font-bold italic">VEJA</span>
-          <span className="text-xl font-bold italic">FOLHA</span>
-          <span className="text-xl font-bold italic">ESTADÃO</span>
-          <span className="text-xl font-bold italic">SBT</span>
+      <div className="w-full bg-dark-100 py-8 border-y border-dark-200 overflow-hidden relative">
+        <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
+          {/* We render the logos multiple times to ensure a smooth infinite scroll */}
+          {[1, 2, 3].map((set) => (
+            <div key={set} className="flex items-center space-x-16 px-8 min-w-max">
+              {/* eslint-disable @next/next/no-img-element */}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Rede_Globo_logo.svg" alt="Rede Globo" className="h-10 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all brightness-0 invert" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Veja_logo.svg" alt="Veja" className="h-8 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all brightness-0 invert" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Folha_de_S.Paulo_logo.svg" alt="Folha de S.Paulo" className="h-6 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all brightness-0 invert" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/O_Estado_de_S._Paulo_logo.svg" alt="Estadão" className="h-8 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all brightness-0 invert" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/SBT_logo.svg" alt="SBT" className="h-10 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all brightness-0 invert" />
+              {/* eslint-enable @next/next/no-img-element */}
+            </div>
+          ))}
         </div>
       </div>
 

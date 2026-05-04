@@ -33,6 +33,15 @@ const config: Config = {
           500: "#6b7280",
         }
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(calc(-100% / 3))' },
+        }
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
+      }
     },
   },
   plugins: [],
